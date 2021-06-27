@@ -46,7 +46,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	fs := http.FileServer(http.Dir("tamplates/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
-	http.HandleFunc("/jopa", viewHandler)
+	http.HandleFunc("/", viewHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
