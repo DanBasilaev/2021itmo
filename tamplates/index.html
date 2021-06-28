@@ -13,11 +13,11 @@
 <body>
 <div id="app">
 
-<header  id="head">
+<header id="head">
     <h1>{{header}}</h1>
     <div id="sign-log">
-        <button v-model="log_in" v-on:click="logBtn">{{log_in}}</button>
-         <button v-model="sign_up" v-on:click="regBtn">{{sign_up}}</button>
+        <button v-on:click="logBtn">{{log_in}}</button>
+         <button  v-on:click="regBtn">{{sign_up}}</button>
      </div>
      <div hidden id="name">
          <h2>{{name}} {{lastname}}</h2>
@@ -28,15 +28,21 @@
  <main>
      <form method="post" id='form'>
          <textarea v-model="form"  required></textarea>
-         <button v-model="form" v-on:click="cleanMessage">{{encoding}}</button>
+         <button v-on:click="cleanMessage">{{encoding}}</button>
     </form>
 
     <div id="mod_menu">
         <div hidden id="user">
+            <div>
+                1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
             <button v-on:click="exitBtn">{{exit}}</button>
          </div>
 
-         <form method="post" hidden class="menu"  id="reg">
+         <form method="post" hidden class="menu" action="localhost:63342/2021itmo/tamplates/index.html" id="reg">
              <input v-model="name" type="text" name="name" required placeholder="Введите Имя">
              <input v-model="lastname" type="text" name="lastname" required placeholder="Введите Фамилию">
              <input v-model="login" type="text" name="login" required placeholder="Введите логин">
@@ -44,7 +50,7 @@
              <button v-on:click="regBtn_menu">{{registration}}</button>
          </form>
 
-        <form method="get" hidden class="menu" id="log">
+        <form method="get" hidden class="menu" action="localhost:63342/2021itmo/tamplates/index.html" id="log">
             <input v-model="login" type="text" name="login" required placeholder="Введите логин">
             <input v-model="password" type="password" name="password" required placeholder="Введите пароль">
             <button  v-on:click="logBtn_menu">{{log}}</button>
