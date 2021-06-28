@@ -30,30 +30,27 @@ var app = new Vue({
 
         },
         cleanMessage: function () {
-            try {
-                if (this.form === ''){
-                    throw 'error'
-                }
-                else {
-                    this.form = '';
-                }
-            }
-            catch{
-                alert("")
-            }
+            this.form = '';
         },
         regBtn_menu: function () {
-            var regbtn = document.getElementById('reg').hidden = true
-            var user= document.getElementById('user').hidden = false
-            var sign = document.getElementById("sign-log").hidden = true
-            var user_name = document.getElementById('name').hidden = false
+
+            if (this.name != '' && this.lastname != '' && this.login != '' && this.password != ''){
+                var logbtn = document.getElementById('reg').hidden = true
+                var sign = document.getElementById("sign-log").hidden = true
+                var user= document.getElementById('user').hidden = false
+                var user_name = document.getElementById('name').hidden = false
+
+            }
 
         },
         logBtn_menu: function () {
-            var logbtn = document.getElementById('log').hidden = true
-            var user= document.getElementById('user').hidden = false
-            var sign = document.getElementById("sign-log").hidden = true
-            var user_name = document.getElementById('name').hidden = false
+            if (this.login != '' && this.password != ''){
+                var logbtn = document.getElementById('log').hidden = true
+                var user= document.getElementById('user').hidden = false
+                var sign = document.getElementById("sign-log").hidden = true
+                var user_name = document.getElementById('name').hidden = false
+            }
+
         },
 
         exitBtn: function (){
@@ -64,10 +61,10 @@ var app = new Vue({
         }
     }
 })
-
 $(document).keypress(
     function(event){
         if (event.which == '13') {
             event.preventDefault();
         }
     });
+

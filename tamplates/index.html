@@ -36,17 +36,17 @@
             <button v-on:click="exitBtn">{{exit}}</button>
          </div>
 
-         <form method="post" hidden class="menu" id="reg">
-             <input v-model="name" type="text" name="name" placeholder="Введите Имя">
-             <input v-model="lastname" type="text" name="lastname" placeholder="Введите Фамилию">
-             <input v-model="login" type="text" name="login" placeholder="Введите логин">
-             <input v-model="password" type="password" name="password" placeholder="Введите пароль">
+         <form method="post" hidden class="menu"  id="reg">
+             <input v-model="name" type="text" name="name" required placeholder="Введите Имя">
+             <input v-model="lastname" type="text" name="lastname" required placeholder="Введите Фамилию">
+             <input v-model="login" type="text" name="login" required placeholder="Введите логин">
+             <input v-model="password" type="password" name="password" required placeholder="Введите пароль">
              <button v-on:click="regBtn_menu">{{registration}}</button>
          </form>
 
         <form method="get" hidden class="menu" id="log">
-            <input v-model="login" type="text" name="login" placeholder="Введите логин">
-            <input v-model="password" type="password" name="password" placeholder="Введите пароль">
+            <input v-model="login" type="text" name="login" required placeholder="Введите логин">
+            <input v-model="password" type="password" name="password" required placeholder="Введите пароль">
             <button  v-on:click="logBtn_menu">{{log}}</button>
         </form>
 
