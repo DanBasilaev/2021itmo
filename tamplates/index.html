@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<div id="app">
+<form id="app">
 
 <header  id="head">
     <h1>{{header}}</h1>
@@ -26,10 +26,10 @@
 
 
  <main>
-     <div id='form'>
+     <form method="post" id='form'>
          <textarea v-model="form"  required></textarea>
          <button v-model="form" v-on:click="cleanMessage">{{encoding}}</button>
-    </div>
+    </form>
 
     <div id="mod_menu">
         <div hidden id="user">
@@ -43,9 +43,10 @@
              <input v-model="password" type="password" name="password" placeholder="Введите пароль">
              <button v-on:click="regBtn_menu">{{registration}}</button>
          </form>
-        <form method="post" hidden class="menu" id="log">
-            <input v-model="name" type="text" name="login" placeholder="Введите логин">
-            <input v-model="lastname" type="password" name="password" placeholder="Введите пароль">
+
+        <form method="get" hidden class="menu" id="log">
+            <input v-model="login" type="text" name="login" placeholder="Введите логин">
+            <input v-model="password" type="password" name="password" placeholder="Введите пароль">
             <button  v-on:click="logBtn_menu">{{log}}</button>
         </form>
 
