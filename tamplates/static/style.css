@@ -92,7 +92,7 @@ main{
 
 /*---------Form*/
 
-#form{
+#forma{
     margin-top: 3%;
     width: 60%;
     min-width: 660px;
@@ -101,7 +101,7 @@ main{
     float: left;
 
 }
-#form textarea{
+#forma textarea{
     width: 95%;
     height: 570px;
     resize: none;
@@ -115,13 +115,17 @@ main{
     padding: 1%;
 }
 
-#form textarea:focus{
+canvas{
+    border: 1px black solid;
+}
+
+#forma textarea:focus{
     outline: none !important;
     border-color: cyan;
     box-shadow: 0 0 10px #a7ffff;
 }
 
-#form button{
+#forma button{
 
     padding: 1%;
     margin: 5% 35% 0 30%;
@@ -139,7 +143,7 @@ main{
 
 }
 
-#form button:hover{
+#forma button:hover{
 
     padding: 1%;
     margin: 5% 35% 0 30%;

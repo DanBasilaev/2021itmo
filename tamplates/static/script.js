@@ -14,23 +14,97 @@ var app = new Vue({
         password: '',
         registration: 'Регистрация',
         log: 'Войти',
-        exit: 'Выход'
+        exit: 'Выход',
+        URL: ''
+
     },
     methods:{
         regBtn: function () {
-            var regbtn = document.getElementById('reg').hidden = false
             var user= document.getElementById('user').hidden = true
+            var regbtn = document.getElementById('reg').hidden = false
             var logbtn = document.getElementById('log').hidden = true
 
         },
         logBtn: function () {
-            var logbtn = document.getElementById('log').hidden = false
             var user= document.getElementById('user').hidden = true
+            var logbtn = document.getElementById('log').hidden = false
             var regbtn = document.getElementById('reg').hidden = true
 
         },
-        cleanMessage: function () {
-            this.form = '';
+        //алгоритм кодирования текста в картику
+        draw: function (){
+            var canvas = document.getElementById('textCanvas'),
+                ctx = canvas.getContext('2d'),
+                input = document.getElementById('text'),
+                width = +(canvas.width = 400),
+                height = +(canvas.height = 300),
+                fontFamily = "Arial",
+                fontSize = "24px",
+                fontColour = "black";
+
+            function fragmentText(text, maxWidth) {
+                var words = text.split(' '),
+                    lines = [],
+                    line = "";
+                if (ctx.measureText(text).width < maxWidth) {
+                    return [text];
+                }
+                while (words.length > 0) {
+                    while (ctx.measureText(words[0]).width >= maxWidth) {
+                        var tmp = words[0];
+                        words[0] = tmp.slice(0, -1);
+                        if (words.length > 1) {
+                            words[1] = tmp.slice(-1) + words[1];
+                        } else {
+                            words.push(tmp.slice(-1));
+                        }
+                    }
+                    if (ctx.measureText(line + words[0]).width < maxWidth) {
+                        line += words.shift() + " ";
+                    } else {
+                        lines.push(line);
+                        line = "";
+                    }
+                    if (words.length === 0) {
+                        lines.push(line);
+                    }
+                }
+                return lines;
+            }
+
+
+
+            function draw() {
+                ctx.save();
+                ctx.clearRect(0, 0, width, height);
+                ctx.font = "bold " + fontSize + " " + fontFamily;
+                ctx.textAlign = "center";
+                ctx.fillStyle = fontColour;
+                var lines = fragmentText(input.value, width - parseInt(fontSize,0));
+                lines.forEach(function(line, i) {
+                    ctx.fillText(line, width / 2, (i + 1) * parseInt(fontSize,0));
+                });
+                ctx.restore();
+                console.log(ctx.canvas.toDataURL())
+                this.URL = ctx.canvas.toDataURL()
+            }
+
+            draw()
+
+
+
+            /*let tCtx = document.getElementById('textCanvas').getContext('2d');
+            let img;
+
+
+            tCtx.font = "48px serif";
+            tCtx.fillText(this.valueOf().form, 10, 50);
+            img = tCtx.canvas.toDataURL();
+            console.log(tCtx)
+            this.URL = img;
+            console.log(this.URL)*/
+
+
         },
         regBtn_menu: function () {
 
@@ -59,12 +133,10 @@ var app = new Vue({
             var user_name = document.getElementById('name').hidden = true
 
         }
+
+
+
     }
 })
-$(document).keypress(
-    function(event){
-        if (event.which == '13') {
-            event.preventDefault();
-        }
-    });
+
 
